@@ -1,0 +1,46 @@
+#spring:
+#  application:
+#    name: commande-service
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:Commande-service
+#  cloud:
+#    discovery:
+#      enabled: true
+#  activemq:
+#    broker-url: tcp://localhost:61616
+#    user: admin
+#    password: admin
+#
+#logging:
+#  level:
+#    feign: DEBUG
+#    org.springframework.cloud.openfeign: DEBUG
+#    org.apache.http: DEBUG
+#
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      messageBrokerService:
+#        slidingWindowSize: 10             # Nombre de requêtes pour le calcul
+#        minimumNumberOfCalls: 5           # Minimum de requêtes pour ouvrir le circuit
+#        failureRateThreshold: 50          # Seuil d'erreurs (%) avant ouverture du circuit
+#        waitDurationInOpenState: 10s      # Temps d'attente avant de retester
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        automaticTransitionFromOpenToHalfOpenEnabled: true
+#  retry:
+#    instances:
+#      messageBrokerRetry:
+#        maxAttempts: 3                    # Nombre de tentatives
+#        waitDuration: 2s                  # Intervalle entre chaque tentative
+#
+#server:
+#  port: 8083
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
